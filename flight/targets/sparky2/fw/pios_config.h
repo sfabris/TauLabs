@@ -140,6 +140,8 @@
 
 #define REVOLUTION
 
+#define RFMTYPE 868
+
 #endif /* PIOS_CONFIG_H */
 /**
  * @}
