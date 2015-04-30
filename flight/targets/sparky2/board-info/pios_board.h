@@ -130,7 +130,7 @@ extern uintptr_t pios_com_logging_id;
 #define PIOS_COM_DEBUG                  (pios_com_debug_id)
 #define PIOS_COM_LOGGING                (pios_com_logging_id)
 
-#define DEBUG_LEVEL 0
+#define DEBUG_LEVEL 9
 #define DEBUG_PRINTF(level, ...) {if(level <= DEBUG_LEVEL && pios_com_debug_id > 0) { PIOS_COM_SendFormattedStringNonBlocking(pios_com_debug_id, __VA_ARGS__); }}
 
 #if defined(PIOS_INCLUDE_RFM22B)
