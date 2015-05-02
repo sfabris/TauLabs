@@ -32,6 +32,7 @@
 #define PIOS_OPENLRS_PRIV_H
 
 #include "pios_openlrs.h"
+#include "openlrs.h"
 
 #define OPENLRSNG_VERSION 0x0382
  

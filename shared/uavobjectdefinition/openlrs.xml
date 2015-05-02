@@ -16,6 +16,15 @@
 		<field name="beacon_frequency" units="" type="uint32" elements="1" defaultvalue="462712500"/>
 		<field name="beacon_delay" units="s" type="uint8" elements="1" defaultvalue="30"/>
 		<field name="beacon_period" units="s" type="uint8" elements="1" defaultvalue="15"/>
+		<!-- openlrsng mudules base frequency -->
+		<field name="rfm22b_frequency" units="function" type="enum" elements="1" defaultvalue="433">
+		<options>
+			<option>433</option>
+			<option>868</option>
+			<option>915</option>
+		</options>
+		</field>
+
 
 
 		<access gcs="readwrite" flight="readwrite"/>
