@@ -384,7 +384,7 @@ androidgcs: $(ANDROIDGCS_OUT_DIR)/bin/androidgcs-$(ANDROIDGCS_BUILD_CONF).apk
 $(ANDROIDGCS_OUT_DIR)/bin/androidgcs-$(ANDROIDGCS_BUILD_CONF).apk: uavo-collections_java
 	$(V0) @echo " ANDROID   $(call toprel, $(ANDROIDGCS_OUT_DIR))"
 	$(V1) mkdir -p $(ANDROIDGCS_OUT_DIR)
-	$(V1) $(ANDROID) $(ANDROID_SILENT) update project --subprojects --target 'Google Inc.:Google APIs:14' --name androidgcs --path ./androidgcs
+	$(V1) $(ANDROID) $(ANDROID_SILENT) update project --subprojects --target 'Google Inc.:Google APIs:21' --name androidgcs --path ./androidgcs
 	$(V1) ant -f ./androidgcs/google-play-services_lib/build.xml \
 		$(ANT_QUIET) debug               
 	$(V1) ant -f ./androidgcs/build.xml \
@@ -413,7 +413,7 @@ androidgcs_clean:
 #
 # Find the git hashes of each commit that changes uavobjects with:
 #   git log --format=%h -- shared/uavobjectdefinition/ | head -n 6 | tr '\n' ' '
-UAVO_GIT_VERSIONS := HEAD 
+UAVO_GIT_VERSIONS := HEAD  8e67b7cb
 
 # All versions includes a pseudo collection called "working" which represents
 # the UAVOs in the source tree
