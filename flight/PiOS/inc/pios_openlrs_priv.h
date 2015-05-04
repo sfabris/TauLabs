@@ -109,6 +109,14 @@
 #define RFM22_DEVICE_TYPE                         0x00  // R
 #define RFM22_DT_MASK                             0x1F
 
+struct frequency {
+  uint32_t min_rfm_frequency;
+  uint32_t max_rfm_frequency;
+  uint32_t default_carrier_frequency;
+  uint32_t binding_frequency;
+} __attribute__((packed));
+
+
 struct bind_data {
   uint8_t version;
   uint32_t serial_baudrate;
@@ -119,13 +127,6 @@ struct bind_data {
   uint8_t hopchannel[MAXHOPS];
   uint8_t modem_params;
   uint8_t flags;
-} __attribute__((packed));
-
-struct frequency {
-  uint32_t min_rfm_frequency;
-  uint32_t max_rfm_frequency;
-  uint32_t default_carrier_frequency;
-  uint32_t binding_frequency;
 } __attribute__((packed));
 
 enum RF_MODE {
@@ -199,6 +200,10 @@ struct pios_openlrs_dev {
   bool failsafeActive;
   uint32_t failsafeDelay;
   uint32_t beacon_rssi_avg;
+
+  // RFM22B Module frequency
+  struct frequency frequency;
+
 };
 
 bool PIOS_OpenLRS_EXT_Int(void);
