@@ -1098,6 +1098,26 @@ int32_t PIOS_OpenLRS_Init(uintptr_t * openlrs_id, uint32_t spi_id,
 	OpenLRSData binding;
 	OpenLRSGet(&binding);
 	if (binding.version == BINDING_VERSION) {
+		switch (binding.RFM22B_frequency) {
+			case "433":
+				openlrs_dev->frequency.min_rfm_frequency = RFMTYPE_433_MIN_RFM_FREQUENCY;
+				openlrs_dev->frequency.max_rfm_frequency = RFMTYPE_433_MAX_RFM_FREQUENCY;
+				openlrs_dev->frequency.default_carrier_frequency = RFMTYPE_433_DEFAULT_CARRIER_FREQUENCY;
+				openlrs_dev->frequency.binding_frequency = RFMTYPE_433_BINDING_FREQUENCY;
+				break;
+			case "868":
+				openlrs_dev->frequency.min_rfm_frequency = RFMTYPE_868_MIN_RFM_FREQUENCY;
+				openlrs_dev->frequency.max_rfm_frequency = RFMTYPE_868_MAX_RFM_FREQUENCY;
+				openlrs_dev->frequency.default_carrier_frequency = RFMTYPE_868_DEFAULT_CARRIER_FREQUENCY;
+				openlrs_dev->frequency.binding_frequency = RFMTYPE_868_BINDING_FREQUENCY;
+				break;
+			case "915":
+				openlrs_dev->frequency.min_rfm_frequency = RFMTYPE_915_MIN_RFM_FREQUENCY;
+				openlrs_dev->frequency.max_rfm_frequency = RFMTYPE_915_MAX_RFM_FREQUENCY;
+				openlrs_dev->frequency.default_carrier_frequency = RFMTYPE_915_DEFAULT_CARRIER_FREQUENCY;
+				openlrs_dev->frequency.binding_frequency = RFMTYPE_915_BINDING_FREQUENCY;
+				break;
+		}
 		openlrs_dev->bind_data.version = binding.version;
 		openlrs_dev->bind_data.serial_baudrate = binding.serial_baudrate;
 		openlrs_dev->bind_data.rf_frequency = binding.rf_frequency;

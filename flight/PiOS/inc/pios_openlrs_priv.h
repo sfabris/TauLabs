@@ -93,22 +93,18 @@
 #define BINDING_VERSION ((OPENLRSNG_VERSION & 0x0ff0)>>4)
 
 // HW frequency limits
-#if (RFMTYPE == 868)
-#  define MIN_RFM_FREQUENCY 848000000
-#  define MAX_RFM_FREQUENCY 888000000
-#  define DEFAULT_CARRIER_FREQUENCY 868000000  // Hz  (ch 0)
-#  define BINDING_FREQUENCY 868000000 // Hz
-#elif (RFMTYPE == 915)
-#  define MIN_RFM_FREQUENCY 895000000
-#  define MAX_RFM_FREQUENCY 935000000
-#  define DEFAULT_CARRIER_FREQUENCY 915000000  // Hz  (ch 0)
-#  define BINDING_FREQUENCY 915000000 // Hz
-#else
-#  define MIN_RFM_FREQUENCY 413000000
-#  define MAX_RFM_FREQUENCY 463000000
-#  define DEFAULT_CARRIER_FREQUENCY 435000000  // Hz  (ch 0)
-#  define BINDING_FREQUENCY 435000000 // Hz
-#endif
+#define RFMTYPE_868_MIN_RFM_FREQUENCY 848000000
+#define RFMTYPE_868_MAX_RFM_FREQUENCY 888000000
+#define RFMTYPE_868_DEFAULT_CARRIER_FREQUENCY 868000000  // Hz  (ch 0)
+#define RFMTYPE_868_BINDING_FREQUENCY 868000000 // Hz
+#define RFMTYPE_915_MIN_RFM_FREQUENCY 895000000
+#define RFMTYPE_915_MAX_RFM_FREQUENCY 935000000
+#define RFMTYPE_915_DEFAULT_CARRIER_FREQUENCY 915000000  // Hz  (ch 0)
+#define RFMTYPE_915_BINDING_FREQUENCY 915000000 // Hz
+#define RFMTYPE_433_MIN_RFM_FREQUENCY 413000000
+#define RFMTYPE_433_MAX_RFM_FREQUENCY 463000000
+#define RFMTYPE_433_DEFAULT_CARRIER_FREQUENCY 435000000  // Hz  (ch 0)
+#define RFMTYPE_433_BINDING_FREQUENCY 435000000 // Hz
 
 #define RFM22_DEVICE_TYPE                         0x00  // R
 #define RFM22_DT_MASK                             0x1F
@@ -123,6 +119,13 @@ struct bind_data {
   uint8_t hopchannel[MAXHOPS];
   uint8_t modem_params;
   uint8_t flags;
+} __attribute__((packed));
+
+struct frequency {
+  uint32_t min_rfm_frequency;
+  uint32_t max_rfm_frequency;
+  uint32_t default_carrier_frequency;
+  uint32_t binding_frequency;
 } __attribute__((packed));
 
 enum RF_MODE {

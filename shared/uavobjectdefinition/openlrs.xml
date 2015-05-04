@@ -16,6 +16,8 @@
 		<field name="beacon_frequency" units="" type="uint32" elements="1" defaultvalue="462712500"/>
 		<field name="beacon_delay" units="s" type="uint8" elements="1" defaultvalue="30"/>
 		<field name="beacon_period" units="s" type="uint8" elements="1" defaultvalue="15"/>
+		<!-- RFM22B Frequency -->
+		<field name="RFM22B_frequency" units="" type="enum" elements="3" options="433,868,915" defaultvalue="433"/>
 
 
 		<access gcs="readwrite" flight="readwrite"/>
