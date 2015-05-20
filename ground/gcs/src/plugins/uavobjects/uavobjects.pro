@@ -222,7 +222,11 @@ SOURCES += $$UAVOBJECT_SYNTHETICS/accels.cpp \
     $$UAVOBJECT_SYNTHETICS/objectpersistence.cpp \
     $$UAVOBJECT_SYNTHETICS/oplinksettings.cpp \
     $$UAVOBJECT_SYNTHETICS/openlrs.cpp \
+<<<<<<< HEAD
     $$UAVOBJECT_SYNTHETICS/openlrsstatus.cpp \
+=======
+	$$UAVOBJECT_SYNTHETICS/openlrsstatus.cpp \
+>>>>>>> Initial commit, RSSI is working and can be enabled in ManualControlSettings
     $$UAVOBJECT_SYNTHETICS/overosyncsettings.cpp \
     $$UAVOBJECT_SYNTHETICS/overosyncstats.cpp \
     $$UAVOBJECT_SYNTHETICS/pathdesired.cpp \

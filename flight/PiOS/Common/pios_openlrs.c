@@ -867,6 +867,7 @@ static void pios_openlrs_rx_loop(struct pios_openlrs_dev *openlrs_dev)
 
 		// Flag to indicate ever got a link
 		openlrs_dev->link_acquired |= true;
+		openlrs_dev->failsafeActive = 0;
 		openlrs_status.FailsafeActive = OPENLRSSTATUS_FAILSAFEACTIVE_INACTIVE;
 
 		if (openlrs_dev->bind_data.flags & TELEMETRY_MASK) {
@@ -926,7 +927,12 @@ static void pios_openlrs_rx_loop(struct pios_openlrs_dev *openlrs_dev)
 		//DEBUG_PRINTF(3,"pios_openlrs_rx_loop -- measure RSSI\r\n");
 
 		openlrs_dev->lastRSSITimeUs = openlrs_dev->lastPacketTimeUs;
+<<<<<<< HEAD
 		openlrs_status.LastRSSI = rfmGetRSSI(openlrs_dev); // Read the RSSI value
+=======
+		openlrs_dev->lastRSSIvalue = rfmGetRSSI(openlrs_dev); // Read the RSSI value
+		openlrs_status.LastRSSI = openlrs_dev->lastRSSIvalue;
+>>>>>>> Initial commit, RSSI is working and can be enabled in ManualControlSettings
 
 		DEBUG_PRINTF(2,"RSSI: %d\r\n", openlrs_status.LastRSSI);
 	}
@@ -965,6 +971,10 @@ static void pios_openlrs_rx_loop(struct pios_openlrs_dev *openlrs_dev)
 				((timeMs - openlrs_dev->linkLossTimeMs) > ((uint32_t) openlrs_dev->failsafeDelay)))
 			{
 				DEBUG_PRINTF(2,"Failsafe activated: %d %d\r\n", timeMs, openlrs_dev->linkLossTimeMs);
+<<<<<<< HEAD
+=======
+				openlrs_dev->failsafeActive = 1;
+>>>>>>> Initial commit, RSSI is working and can be enabled in ManualControlSettings
 				openlrs_status.FailsafeActive = OPENLRSSTATUS_FAILSAFEACTIVE_ACTIVE;
 				//failsafeApply();
 				openlrs_dev->nextBeaconTimeMs = (timeMs + 1000UL * openlrs_dev->beacon_period) | 1; //beacon activating...
@@ -1026,6 +1036,7 @@ uint8_t PIOS_OpenLRS_RSSI_Get(void)
 {
 	if(openlrs_status.FailsafeActive == OPENLRSSTATUS_FAILSAFEACTIVE_ACTIVE)
 		return 0;
+<<<<<<< HEAD
 	else {
 		OpenLRSData openlrs_data;
 		OpenLRSGet(&openlrs_data);
@@ -1053,6 +1064,10 @@ uint8_t PIOS_OpenLRS_RSSI_Get(void)
 			return 0;
 		}
 	}
+=======
+	else
+		return openlrs_status.LastRSSI;
+>>>>>>> Initial commit, RSSI is working and can be enabled in ManualControlSettings
 }
 
 /*****************************************************************************
