@@ -212,11 +212,20 @@ int32_t transmitter_control_update()
 			value = PIOS_ADC_GetChannelRaw(settings.RssiChannelNumber);
 #endif
 			break;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> fix merge
 		case MANUALCONTROLSETTINGS_RSSITYPE_OPENLRS:
 #if defined(PIOS_INCLUDE_OPENLRS_RCVR)
 			value = PIOS_OpenLRS_RSSI_Get();
 #endif /* PIOS_INCLUDE_OPENLRS_RCVR */
 			break;
+<<<<<<< HEAD
+=======
+>>>>>>> fix merge
+>>>>>>> fix merge
 		case MANUALCONTROLSETTINGS_RSSITYPE_FRSKYPWM:
 #if defined(PIOS_INCLUDE_FRSKY_RSSI)
 			value = PIOS_FrSkyRssi_Get();
